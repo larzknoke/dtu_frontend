@@ -129,12 +129,13 @@ const MainLayout = (props) => {
 						<Search
 							placeholder="Search..."
 							allowClear
+							size="large"
+							id="search-box"
 							// onSearch={onSearch}
 							style={{
-								width: 200,
-								marginRight: "auto",
+								width: "30%",
 							}}
-							prefix={<SearchOutlined />}
+							// prefix={<SearchOutlined />}
 						/>
 						{broken && (
 							<Link href="/">

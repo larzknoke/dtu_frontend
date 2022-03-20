@@ -70,8 +70,8 @@ const Sidebar = () => {
 				<span>Dashboard</span>
 			</Menu.Item>
 			<Menu.Item
-				key="/donations"
-				onClick={() => router.push("/donations")}
+				key="/donation"
+				onClick={() => router.push("/donation")}
 				icon={<SkinOutlined />}
 			>
 				<span>Donations</span>

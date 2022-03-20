@@ -1,21 +1,24 @@
 import React from "react";
-import { Card } from "antd";
+import { Card, Col } from "antd";
+import Link from "next/link";
 
 const { Meta } = Card;
 
-function DonationCard() {
+function DonationCard({ donation }) {
 	return (
-		<Card
-			hoverable
-			cover={
-				<img
-					alt="example"
-					src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f1195c881ae1b6d53c519069277749934024d58/9f9c5cc957db46659e9b3a1940102fe8.webp"
-				/>
-			}
-		>
-			<Meta title="Europe Street beat" description="www.instagram.com" />
-		</Card>
+		<Col xs={24} md={5}>
+			<Link href={`/donation/${donation.id}`}>
+				<Card
+					hoverable
+					cover={<img alt="example" src={donation.image_url} />}
+				>
+					<Meta
+						title={donation.title}
+						description={donation.description}
+					/>
+				</Card>
+			</Link>
+		</Col>
 	);
 }
 
