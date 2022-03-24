@@ -14,7 +14,7 @@ function DonationPage(props) {
 export async function getServerSideProps() {
 	const res = await fetch("http://localhost:3000/donations.json");
 	if (!res.ok) {
-		throw `Server error: [${resp.status}] [${resp.statusText}] [${resp.url}]`;
+		throw `Server error: [${res.status}] [${res.statusText}] [${res.url}]`;
 	}
 	const donations = await res.json();
 

@@ -1,33 +1,31 @@
 /* eslint-disable no-console */
 /* --------------------------------------------------------
-* Author Trần Đức Tiến
-* Email tientran0019@gmail.com
-* Phone 0972970075
-*
-* Created: 2020-03-01 17:15:11
-*------------------------------------------------------- */
+ * Author Trần Đức Tiến
+ * Email tientran0019@gmail.com
+ * Phone 0972970075
+ *
+ * Created: 2020-03-01 17:15:11
+ *------------------------------------------------------- */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { Menu, Dropdown, Modal } from 'antd';
-import { useSelector, useDispatch } from 'react-redux';
+import { Menu, Dropdown, Modal } from "antd";
+import { useSelector, useDispatch } from "react-redux";
 
-import Router from 'next/router';
-import Link from 'next/link';
+import Router from "next/router";
+import Link from "next/link";
 
-import { BiKey } from 'react-icons/bi';
-import { AiOutlineLogout } from 'react-icons/ai';
+import { BiKey } from "react-icons/bi";
+import { AiOutlineLogout } from "react-icons/ai";
 
-import {
-	ExclamationCircleOutlined,
-} from '@ant-design/icons';
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 
-import Avatar from 'src/components/Avatar';
+import Avatar from "src/components/Avatar";
 
-import { actionLogout } from 'src/redux/actions/auth';
+import { actionLogout } from "src/redux/actions/auth";
 
-import classes from './style.module.less';
+import classes from "./style.module.less";
 
 const propTypes = {
 	style: PropTypes.object,
@@ -40,23 +38,25 @@ const defaultProps = {
 const AvatarDropDown = (props) => {
 	const { style } = props;
 
-	const auth = useSelector(state => state.auth);
+	const auth = useSelector((state) => state.auth);
 	const { paymentDetail: { paid } = {} } = auth || {};
 
 	const dispatch = useDispatch();
 
 	const handleLogout = React.useCallback(async () => {
 		Modal.confirm({
-			title: 'Are you sure?',
+			title: "Are you sure?",
 			icon: <ExclamationCircleOutlined />,
 			// content: 'Are you sure?',
 			onOk: async () => {
-				await dispatch(await actionLogout(() => {
-					Router.push('/login');
-				}));
+				await dispatch(
+					await actionLogout(() => {
+						Router.push("/login");
+					})
+				);
 			},
 			onCancel() {
-				console.log('Cancel');
+				console.log("Cancel");
 			},
 		});
 	}, [dispatch]);
@@ -102,14 +102,19 @@ const AvatarDropDown = (props) => {
 	);
 
 	return (
-		<Dropdown style={style}  placement="bottomRight" overlay={menu} trigger={['click']}>
-			<div style={{ lineHeight: '50px' }}>
+		<Dropdown
+			style={style}
+			placement="bottomRight"
+			overlay={menu}
+			trigger={["click"]}
+		>
+			<div style={{ lineHeight: "50px" }}>
 				<Avatar
 					size={30}
 					src={auth.avatar}
 					fullName={auth.fullName}
 					style={{
-						cursor: 'pointer',
+						cursor: "pointer",
 					}}
 					vip={paid}
 				/>

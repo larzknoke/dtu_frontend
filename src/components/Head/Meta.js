@@ -1,15 +1,15 @@
 /* --------------------------------------------------------
-* Author Trần Đức Tiến
-* Email tientran0019@gmail.com
-* Phone 0972970075
-*
-* Created: 2021-03-10 11:36:23
-*------------------------------------------------------- */
+ * Author Trần Đức Tiến
+ * Email tientran0019@gmail.com
+ * Phone 0972970075
+ *
+ * Created: 2021-03-10 11:36:23
+ *------------------------------------------------------- */
 
-import React from 'react';
+import React from "react";
 // import PropTypes from 'prop-types';
 
-import METADATA from 'src/constants/metadata';
+import METADATA from "src/constants/metadata";
 
 const propTypes = {
 	// title: PropTypes.string.isRequired,
@@ -24,17 +24,14 @@ const Meta = (props) => {
 
 	return (
 		<>
-			<meta
-				name="description"
-				content={METADATA.APP_DESCRIPTION}
-			/>
-			<meta
-				content={METADATA.KEY_WORDS}
-				name="keywords"
-			/>
+			<meta name="description" content={METADATA.APP_DESCRIPTION} />
+			<meta content={METADATA.KEY_WORDS} name="keywords" />
 			{/* Twitter */}
 			<meta name="twitter:card" content="summary" />
-			<meta name="twitter:site" content={'@' + METADATA.APP_NAME.toLowerCase()} />
+			<meta
+				name="twitter:site"
+				content={"@" + METADATA.APP_NAME.toLowerCase()}
+			/>
 			<meta name="twitter:title" content={METADATA.APP_NAME} />
 			<meta
 				name="twitter:description"
@@ -42,7 +39,7 @@ const Meta = (props) => {
 			/>
 			<meta name="twitter:image" content={METADATA.IMG_SHARE} />
 			{/* Facebook */}
-			<meta property="fb:app_id" content={METADATA.FB_APP_ID} />
+			<meta property="fb:app_id" content={METADATA.FB_APP_ID} />y
 			<meta property="og:type" content="website" />
 			<meta property="og:title" content={METADATA.APP_NAME} />
 			<meta
