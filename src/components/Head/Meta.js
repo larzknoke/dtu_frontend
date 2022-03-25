@@ -39,7 +39,7 @@ const Meta = (props) => {
 			/>
 			<meta name="twitter:image" content={METADATA.IMG_SHARE} />
 			{/* Facebook */}
-			<meta property="fb:app_id" content={METADATA.FB_APP_ID} />y
+			<meta property="fb:app_id" content={METADATA.FB_APP_ID} />
 			<meta property="og:type" content="website" />
 			<meta property="og:title" content={METADATA.APP_NAME} />
 			<meta

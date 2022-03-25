@@ -126,17 +126,16 @@ const MainLayout = (props) => {
 								onClick: handleToggle,
 							}
 						)}
-						<Search
-							placeholder="Search..."
-							allowClear
-							size="large"
-							id="search-box"
-							// onSearch={onSearch}
-							style={{
-								width: "30%",
-							}}
-							// prefix={<SearchOutlined />}
-						/>
+						<div className="search-wrapper-head">
+							<Search
+								placeholder="Search..."
+								allowClear
+								size="large"
+								id="search-box"
+								// onSearch={onSearch}
+								// prefix={<SearchOutlined />}
+							/>
+						</div>
 						{broken && (
 							<Link href="/">
 								<a>
@@ -168,6 +167,16 @@ const MainLayout = (props) => {
 							margin: 20,
 						}}
 					>
+						<div className="search-wrapper-content">
+							<Search
+								placeholder="Search..."
+								allowClear
+								size="large"
+								id="search-box"
+								// onSearch={onSearch}
+								// prefix={<SearchOutlined />}
+							/>
+						</div>
 						{children}
 					</Content>
 					<Footer />

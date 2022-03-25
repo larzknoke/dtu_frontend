@@ -268,3 +268,27 @@ img {
 		height: 250px;
 	}
 }
+
+.search-wrapper-head {
+	display: none;
+}
+@media screen and (min-width: @screen-md) {
+	.search-wrapper-head {
+		display: block;
+		width: 30%;
+	}
+}
+
+.search-wrapper-content {
+	display: block;
+	margin-bottom: 15px;
+	& * {
+		border-color: white;
+	}
+}
+@media screen and (min-width: @screen-md) {
+	.search-wrapper-content {
+		display: none;
+		// width: 30%;
+	}
+}
