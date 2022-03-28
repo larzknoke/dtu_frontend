@@ -1,8 +1,24 @@
 import React, { useState } from "react";
-import { Typography, Divider, Image, Space } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import {
+	Typography,
+	Divider,
+	Image,
+	Space,
+	Col,
+	Row,
+	Button,
+	Tooltip,
+} from "antd";
+import {
+	HomeOutlined,
+	CalendarOutlined,
+	PhoneOutlined,
+	MailOutlined,
+	StarOutlined,
+} from "@ant-design/icons";
+import Paragraph from "antd/lib/typography/Paragraph";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 function Donation(props) {
 	const { donation = [] } = props;
@@ -15,6 +31,7 @@ function Donation(props) {
 					preview={{ visible: false }}
 					src={donation.image_url}
 					onClick={() => setVisible(true)}
+					width="100%"
 				/>
 				<div style={{ display: "none" }}>
 					<Image.PreviewGroup
@@ -28,11 +45,64 @@ function Donation(props) {
 						<Image src="https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp" />
 					</Image.PreviewGroup>
 				</div>
-				<Title level={2} style={{ marginBottom: 0 }}>
-					{donation.title}
-				</Title>
-				<Divider plain style={{ margin: "0" }}></Divider>
-				<HomeOutlined />
+				<Row justify="space-between">
+					<Col>
+						<Title level={2} style={{ marginBottom: 0 }}>
+							{donation.title}
+						</Title>
+					</Col>
+					<Col>
+						<Tooltip title="Bookmark" placement="left">
+							<StarOutlined
+								style={{
+									fontSize: "24px",
+									marginTop: "6px",
+									color: "#bbb",
+								}}
+							/>
+						</Tooltip>
+					</Col>
+				</Row>
+				<Divider plain style={{ margin: "2px 0" }}></Divider>
+				<Row justify="space-between">
+					<Col>
+						<Space>
+							<HomeOutlined style={{ color: "#bbb" }} />
+							<Text>{donation.location}</Text>
+						</Space>
+					</Col>
+					<Col>
+						<Space>
+							<CalendarOutlined style={{ color: "#bbb" }} />
+							<Text>{donation.created_month_year}</Text>
+						</Space>
+					</Col>
+				</Row>
+				<Divider plain style={{ margin: "2px 0" }}></Divider>
+				<Paragraph>{donation.description}</Paragraph>
+				<Row gutter="8">
+					<Col span={8}>
+						<Button
+							block
+							size="large"
+							type="primary"
+							htmlType="submit"
+							icon={<PhoneOutlined />}
+						>
+							Call
+						</Button>
+					</Col>
+					<Col span={16}>
+						<Button
+							block
+							size="large"
+							type="primary"
+							icon={<MailOutlined />}
+						>
+							Message
+						</Button>
+					</Col>
+				</Row>
 			</Space>
 		</>
 	);

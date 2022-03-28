@@ -19,6 +19,7 @@ import {
 	MenuUnfoldOutlined,
 	MenuFoldOutlined,
 	SearchOutlined,
+	PlusOutlined,
 } from "@ant-design/icons";
 
 import Sidebar from "src/components/Layout/Sidebar";
@@ -30,6 +31,7 @@ import Notifications from "src/components/Notifications";
 import CookieAlert from "src/components/CookieAlert";
 
 import classes from "./style.module.less";
+import NewDonation from "src/components/NewDonation";
 
 const { Content, Sider } = Layout;
 const { Search } = Input;
@@ -152,6 +154,7 @@ const MainLayout = (props) => {
 							</Link>
 						)}
 						<div className={classes.headerRight}>
+							<NewDonation />
 							<Notifications />
 							<AvatarDropDown />
 						</div>

@@ -1,14 +1,77 @@
 import React from "react";
-import { Card, Col } from "antd";
+import { Card, Col, Divider, Image, Row, Typography, Space } from "antd";
 import Link from "next/link";
+import {
+	HomeOutlined,
+	CalendarOutlined,
+	PhoneOutlined,
+	MailOutlined,
+	StarOutlined,
+} from "@ant-design/icons";
 
 const { Meta } = Card;
+const { Title, Text, Paragraph } = Typography;
 
 function DonationCard({ donation }) {
 	return (
-		<Col xs={24} md={5}>
+		<Col xs={24} md={12}>
 			<Link href={`/donation/${donation.id}`}>
-				<Card
+				<Card className="donation-list-item">
+					<Row gutter={18}>
+						<Col span={8}>
+							<Image
+								src={donation.image_url}
+								// height="100px"
+								// width="100px"
+							/>
+						</Col>
+						<Col span={16} className="donation-list-item-text">
+							<Title level={5}>{donation.title}</Title>
+							<Divider style={{ margin: "7px 0px" }} />
+							<Row justify="start" style={{ lineHeight: "1.4" }}>
+								<Col span={24}>
+									<Space>
+										<HomeOutlined
+											style={{
+												color: "#bbb",
+												fontSize: "10px",
+											}}
+										/>
+										<Text
+											style={{
+												color: "#bbb",
+												fontSize: 10,
+											}}
+										>
+											{donation.location
+												? donation.location
+												: "-"}
+										</Text>
+									</Space>
+								</Col>
+								<Col span={24}>
+									<Space>
+										<CalendarOutlined
+											style={{
+												color: "#bbb",
+												fontSize: "10px",
+											}}
+										/>
+										<Text
+											style={{
+												color: "#bbb",
+												fontSize: 10,
+											}}
+										>
+											{donation.created_month_year}
+										</Text>
+									</Space>
+								</Col>
+							</Row>
+						</Col>
+					</Row>
+				</Card>
+				{/* <Card
 					hoverable
 					cover={<img alt="example" src={donation.image_url} />}
 				>
@@ -16,7 +79,7 @@ function DonationCard({ donation }) {
 						title={donation.title}
 						description={donation.description}
 					/>
-				</Card>
+				</Card> */}
 			</Link>
 		</Col>
 	);

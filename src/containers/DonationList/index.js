@@ -7,7 +7,7 @@ function Donations(props) {
 
 	return (
 		<>
-			<Row gutter={[16, 24]}>
+			<Row gutter={[16, 14]}>
 				{donations.map((donation) => {
 					return (
 						<DonationCard key={donation.id} donation={donation} />
