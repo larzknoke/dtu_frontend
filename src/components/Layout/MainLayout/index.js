@@ -95,7 +95,7 @@ const MainLayout = (props) => {
 						left: broken && !mobiShow ? -200 : 0,
 					}}
 				>
-					<Link href="/">
+					<Link href="/donation">
 						<a>
 							<div className={classes.logo}>
 								<Image
@@ -139,7 +139,7 @@ const MainLayout = (props) => {
 							/>
 						</div>
 						{broken && (
-							<Link href="/">
+							<Link href="/donation">
 								<a>
 									<div className={classes.logoCenter}>
 										<Image

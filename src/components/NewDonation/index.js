@@ -1,18 +1,48 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Checkbox, Tooltip, Modal, message } from "antd";
+import { useRouter } from "next/router";
+import {
+	InputNumber,
+	Button,
+	Form,
+	Input,
+	Checkbox,
+	Tooltip,
+	Modal,
+	message,
+	Row,
+	Col,
+	Typography,
+	Select,
+	Divider,
+	Upload,
+} from "antd";
+import { InboxOutlined } from "@ant-design/icons";
+
 import { PlusOutlined } from "@ant-design/icons";
 
 function NewDonation() {
+	const router = useRouter();
 	const [showNewForm, setShowNewForm] = useState(false);
 	const [donationForm] = Form.useForm();
+	const { Option } = Select;
+
+	const normFile = (e) => {
+		console.log("Upload event:", e);
+
+		if (Array.isArray(e)) {
+			return e;
+		}
+
+		return e && e.fileList;
+	};
 
 	const onFinish = () => {
 		donationForm
 			.validateFields()
 			.then((values) => {
+				console.log("values:", values);
 				setShowNewForm(false);
 				donationForm.resetFields();
-				console.log(values);
 				fetch("http://localhost:3000/donations.json", {
 					method: "POST",
 					body: JSON.stringify({ donation: values }),
@@ -23,12 +53,19 @@ function NewDonation() {
 					.then((response) => response.json())
 					.then((data) => {
 						console.log(data);
-						message.success("This is a success message");
+						message.success("Donation successful created.");
+						router.push(`/donation/${data.id}`);
 					});
 			})
 			.catch((info) => {
 				console.log("Validate Failed:", info);
 			});
+	};
+
+	const dummyRequest = ({ file, onSuccess }) => {
+		setTimeout(() => {
+			onSuccess("ok");
+		}, 0);
 	};
 
 	return (
@@ -97,6 +134,58 @@ function NewDonation() {
 						]}
 					>
 						<Input.TextArea />
+					</Form.Item>
+					<Divider />
+					<Typography.Title type="secondary" level={5}>
+						Contact Information
+					</Typography.Title>
+					<Form.Item label="Name" name="contact">
+						<Input />
+					</Form.Item>
+					<Form.Item label="Street" name="street">
+						<Input />
+					</Form.Item>
+					<Row gutter={24}>
+						<Col span={8}>
+							<Form.Item label="PLZ" name="plz">
+								<InputNumber min={11111} max={99999} />
+							</Form.Item>
+						</Col>
+						<Col span={16}>
+							<Form.Item label="City" name="city">
+								<Input />
+							</Form.Item>
+						</Col>
+					</Row>
+					<Divider />
+					<Form.Item label="Category" name="category">
+						<Select allowClear>
+							<Option value="clothes">Clothes</Option>
+							<Option value="electricity">Electricity</Option>
+						</Select>
+					</Form.Item>
+					<Form.Item label="Images">
+						<Form.Item
+							name="images"
+							valuePropName="fileList"
+							getValueFromEvent={normFile}
+							noStyle
+						>
+							<Upload.Dragger
+								name="files"
+								customRequest={dummyRequest}
+							>
+								<p className="ant-upload-drag-icon">
+									<InboxOutlined />
+								</p>
+								<p className="ant-upload-text">
+									Click or drag file to this area to upload
+								</p>
+								<p className="ant-upload-hint">
+									Support for a single or bulk upload.
+								</p>
+							</Upload.Dragger>
+						</Form.Item>
 					</Form.Item>
 				</Form>
 			</Modal>

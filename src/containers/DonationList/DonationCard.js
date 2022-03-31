@@ -9,10 +9,14 @@ import {
 	StarOutlined,
 } from "@ant-design/icons";
 
-const { Meta } = Card;
 const { Title, Text, Paragraph } = Typography;
 
 function DonationCard({ donation }) {
+	let donationImage =
+		donation.image_url != undefined
+			? donation.image_url
+			: "https://via.placeholder.com/200";
+
 	return (
 		<Col xs={24} md={12}>
 			<Link href={`/donation/${donation.id}`}>
@@ -20,7 +24,8 @@ function DonationCard({ donation }) {
 					<Row gutter={18}>
 						<Col span={8}>
 							<Image
-								src={donation.image_url}
+								src={donationImage}
+								preview={false}
 								// height="100px"
 								// width="100px"
 							/>

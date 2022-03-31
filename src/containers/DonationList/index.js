@@ -2,8 +2,8 @@ import React from "react";
 import DonationCard from "./DonationCard";
 import { Row } from "antd";
 
-function Donations(props) {
-	const { router, donations = [] } = props;
+function Donations({ donations = [] }) {
+	// const { router, donations = [] } = props;
 
 	return (
 		<>

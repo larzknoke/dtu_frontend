@@ -24,12 +24,17 @@ function Donation(props) {
 	const { donation = [] } = props;
 	const [visible, setVisible] = useState(false);
 
+	let donationImage =
+		donation.image_url != undefined
+			? donation.image_url
+			: "https://via.placeholder.com/400x300";
+
 	return (
 		<>
 			<Space direction="vertical">
 				<Image
 					preview={{ visible: false }}
-					src={donation.image_url}
+					src={donationImage}
 					onClick={() => setVisible(true)}
 					width="100%"
 				/>
@@ -68,7 +73,9 @@ function Donation(props) {
 					<Col>
 						<Space>
 							<HomeOutlined style={{ color: "#bbb" }} />
-							<Text>{donation.location}</Text>
+							<Text>
+								{donation.location ? donation.location : "-"}
+							</Text>
 						</Space>
 					</Col>
 					<Col>
